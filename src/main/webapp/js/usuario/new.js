@@ -1,4 +1,4 @@
-/* 
+AWAWAWSDWAFS/* 
  * Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
  * 
  * openAUSIAS: The stunning micro-library that helps you to develop easily 
