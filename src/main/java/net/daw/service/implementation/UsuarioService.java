@@ -376,8 +376,10 @@ public class UsuarioService implements TableServiceInterface, ViewServiceInterfa
         UsuarioBean oUserBean = (UsuarioBean) oRequest.getSession().getAttribute("userBean");
         if (oUserBean == null) {
             return 0;
-        } else {
-            return oUserBean.getId_estado();
+        } 
+        else {
+            return 1;
+//            return oUserBean.getId_estado();
         }
     }
 
