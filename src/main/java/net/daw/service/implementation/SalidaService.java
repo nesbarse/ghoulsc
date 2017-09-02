@@ -33,10 +33,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import net.daw.bean.implementation.EntradaBean;
+import net.daw.bean.implementation.SalidaBean;
 import net.daw.bean.implementation.UsuarioBean;
 import net.daw.connection.publicinterface.ConnectionInterface;
-import net.daw.dao.implementation.EntradaDao;
+import net.daw.dao.implementation.SalidaDao;
 
 import net.daw.helper.statics.AppConfigurationHelper;
 import static net.daw.helper.statics.AppConfigurationHelper.getSourceConnection;
@@ -48,11 +48,11 @@ import net.daw.helper.statics.ParameterCook;
 import net.daw.service.publicinterface.TableServiceInterface;
 import net.daw.service.publicinterface.ViewServiceInterface;
 
-public class EntradaService implements TableServiceInterface, ViewServiceInterface {
+public class SalidaService implements TableServiceInterface, ViewServiceInterface {
 
     protected HttpServletRequest oRequest = null;
 
-    public EntradaService(HttpServletRequest request) {
+    public SalidaService(HttpServletRequest request) {
         oRequest = request;
     }
 
@@ -75,8 +75,8 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                data = JsonMessage.getJson("200", Integer.toString(oEntradaDao.getCount(alFilter)));
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                data = JsonMessage.getJson("200", Integer.toString(oSalidaDao.getCount(alFilter)));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getCount ERROR: " + ex.getMessage()));
             } finally {
@@ -103,11 +103,11 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                EntradaBean oEntradaBean = new EntradaBean(id);
-                oEntradaBean = oEntradaDao.get(oEntradaBean, AppConfigurationHelper.getJsonDepth());
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                SalidaBean oSalidaBean = new SalidaBean(id);
+                oSalidaBean = oSalidaDao.get(oSalidaBean, AppConfigurationHelper.getJsonDepth());
                 Gson gson = AppConfigurationHelper.getGson();
-                data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(oEntradaBean));
+                data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(oSalidaBean));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":get ERROR: " + ex.getMessage()));
             } finally {
@@ -137,8 +137,8 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                ArrayList<EntradaBean> arrBeans = oEntradaDao.getAll(alFilter, hmOrder, 1);
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                ArrayList<SalidaBean> arrBeans = oSalidaDao.getAll(alFilter, hmOrder, 1);
                 data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(arrBeans));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getAll ERROR: " + ex.getMessage()));
@@ -171,8 +171,8 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                List<EntradaBean> arrBeans = oEntradaDao.getPage(intRegsPerPag, intPage, alFilter, hmOrder, AppConfigurationHelper.getJsonDepth());
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                List<SalidaBean> arrBeans = oSalidaDao.getPage(intRegsPerPag, intPage, alFilter, hmOrder, AppConfigurationHelper.getJsonDepth());
                 data = JsonMessage.getJson("200", AppConfigurationHelper.getGson().toJson(arrBeans));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getPage ERROR: " + ex.getMessage()));
@@ -201,8 +201,8 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
             try {
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                data = JsonMessage.getJson("200", Integer.toString(oEntradaDao.getPages(intRegsPerPag, alFilter)));
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                data = JsonMessage.getJson("200", Integer.toString(oSalidaDao.getPages(intRegsPerPag, alFilter)));
             } catch (Exception ex) {
                 ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getPages ERROR: " + ex.getMessage()));
             } finally {
@@ -253,8 +253,8 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
                 oConnection.setAutoCommit(false);
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                resultado = JsonMessage.getJson("200", (String) oEntradaDao.remove(id).toString());
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                resultado = JsonMessage.getJson("200", (String) oSalidaDao.remove(id).toString());
                 oConnection.commit();
             } catch (Exception ex) {
                 oConnection.rollback();
@@ -284,11 +284,11 @@ public class EntradaService implements TableServiceInterface, ViewServiceInterfa
                 oDataConnectionSource = getSourceConnection();
                 oConnection = oDataConnectionSource.newConnection();
                 oConnection.setAutoCommit(false);
-                EntradaDao oEntradaDao = new EntradaDao(oConnection);
-                EntradaBean oEntradaBean = new EntradaBean();
-                oEntradaBean = AppConfigurationHelper.getGson().fromJson(jason, oEntradaBean.getClass());
-                if (oEntradaBean != null) {
-                    Integer iResult = oEntradaDao.set(oEntradaBean);
+                SalidaDao oSalidaDao = new SalidaDao(oConnection);
+                SalidaBean oSalidaBean = new SalidaBean();
+                oSalidaBean = AppConfigurationHelper.getGson().fromJson(jason, oSalidaBean.getClass());
+                if (oSalidaBean != null) {
+                    Integer iResult = oSalidaDao.set(oSalidaBean);
                     if (iResult >= 1) {
                         resultado = JsonMessage.getJson("200", iResult.toString());
                     } else {

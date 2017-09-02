@@ -34,7 +34,7 @@ import net.daw.bean.publicinterface.GenericBean;
 
 public class TipousuarioBean implements GenericBean{
 
-    @Expose
+    @Expose 
     private Integer id;
     @Expose
     private String descripcion = "";
@@ -102,7 +102,6 @@ public class TipousuarioBean implements GenericBean{
         this.setId(oResultSet.getInt("id"));
         this.setDescripcion(oResultSet.getString("descripcion"));
         return this;
-
     }
 
 }

@@ -50,6 +50,14 @@ public class SalidaBean implements GenericBean {
     private Integer id_usuario;
     @Expose(deserialize = false)
     private UsuarioBean obj_usuario;
+    
+     public SalidaBean() {
+    }
+
+    public SalidaBean(Integer id) {
+        this.id = id;
+    }
+
 
     public Integer getId() {
         return id;
@@ -111,7 +119,7 @@ public class SalidaBean implements GenericBean {
     }
 
     @Override
-    public GenericBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
+    public SalidaBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
         this.setId(oResultSet.getInt("id"));
         this.setFecha_salida(oResultSet.getTimestamp("fecha_salida"));
         this.id_usuario = oResultSet.getInt("id_usuario");
