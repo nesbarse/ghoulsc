@@ -40,6 +40,8 @@ var openAusias = angular.module('myApp', [
     'tipodocumentoControllers',
     'tipousuarioControllers',
     'estadoControllers',
+    'entradaControllers',
+    'salidaControllers',
     'ui.bootstrap',
     'ngSanitize'
 ]);
@@ -70,6 +72,18 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
         //------------
         $routeProvider.when('/estado/selection/:page?/:rpp?', {templateUrl: 'js/estado/selection.html', controller: 'EstadoSelectionController'});        
         //------------
+        $routeProvider.when('/salida/view/:id', {templateUrl: 'js/salida/view.html', controller: 'DocumentoViewController'});
+        $routeProvider.when('/salida/new', {templateUrl: 'js/salida/newedit.html', controller: 'DocumentoNewController'});
+        $routeProvider.when('/salida/edit/:id', {templateUrl: 'js/salida/newedit.html', controller: 'DocumentoEditController'});
+        $routeProvider.when('/salida/remove/:id', {templateUrl: 'js/salida/remove.html', controller: 'DocumentoRemoveController'});
+        $routeProvider.when('/salida/plist/:page?/:rpp?', {templateUrl: 'js/salida/plist.html', controller: 'DocumentoPListController'});
+        //------------
+        $routeProvider.when('/entrada/view/:id', {templateUrl: 'js/entrada/view.html', controller: 'DocumentoViewController'});
+        $routeProvider.when('/entrada/new', {templateUrl: 'js/entrada/newedit.html', controller: 'DocumentoNewController'});
+        $routeProvider.when('/entrada/edit/:id', {templateUrl: 'js/entrada/newedit.html', controller: 'DocumentoEditController'});
+        $routeProvider.when('/entrada/remove/:id', {templateUrl: 'js/entrada/remove.html', controller: 'DocumentoRemoveController'});
+        $routeProvider.when('/entrada/plist/:page?/:rpp?', {templateUrl: 'js/entrada/plist.html', controller: 'DocumentoPListController'});
+        //------------
         $routeProvider.otherwise({redirectTo: '/'});
 
 
@@ -81,4 +95,6 @@ var moduloDocumento = angular.module('documentoControllers', []);
 var moduloTipodocumento = angular.module('tipodocumentoControllers', []);
 var moduloTipousuario = angular.module('tipousuarioControllers', []);
 var moduloEstado = angular.module('estadoControllers', []);
+var moduloEntrada = angular.module('entradaControllers', []);
+var moduloSalida = angular.module('salidaControllers', []);
 
