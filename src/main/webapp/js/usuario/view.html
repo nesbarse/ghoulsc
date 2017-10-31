@@ -38,25 +38,36 @@ THE SOFTWARE.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>id</td><td>{{bean.id}}</td></tr>       
+                    <tr><td>id</td><td>{{bean.id}}</td></tr>     
+                    <tr><td>nombre</td><td>{{bean.nombre}}</td></tr> 
+                    <tr><td>apellidos</td><td>{{bean.apellidos}}</td></tr> 
                     <tr><td>login</td><td>{{bean.login}}</td></tr> 
                     <tr><td>password</td><td>{{bean.password}}</td></tr> 
 
-                    <tr>
+<!--                    <tr>
                         <td>estado del usuario</td>
                         <td>
                             <a href="#/tipousuario/view/{{bean.obj_estado.id}}">{{bean.obj_estado.tipo}}</a>
                         </td>
-                    </tr> 
+                    </tr> -->
+                    
+                    <tr><td>MAC del telefono</td><td>{{bean.mac_tlfn}}</td></tr>
+                    <tr><td>Numero de teléfono</td><td>{{bean.num_tlfn}}</td></tr>
                     <tr>
                         <td>tipo de usuario</td>
                         <td>
                             <a href="#/tipousuario/view/{{bean.obj_tipousuario.id}}">{{bean.obj_tipousuario.descripcion}}</a>
                         </td>
                     </tr> 
-                    <tr><td>ciudad</td><td>{{bean.ciudad}}</td></tr> 
+<!--                    <tr>
+                        <td>tipo de usuario</td>
+                        <td>
+                            <a href="#/tipousuario/view/{{bean.obj_tipousuario.id}}">{{bean.obj_tipousuario.descripcion}}</a>
+                        </td>
+                    </tr> -->
+<!--                    <tr><td>ciudad</td><td>{{bean.ciudad}}</td></tr> 
                     <tr><td>firma</td><td>{{bean.firma}}</td></tr> 
-                    <tr><td>skin</td><td>{{bean.skin}}</td></tr> 
+                    <tr><td>skin</td><td>{{bean.skin}}</td></tr> -->
 
                 </tbody>
             </table>  

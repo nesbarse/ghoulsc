@@ -25,12 +25,8 @@
  * THE SOFTWARE.
  * 
  */
+
 'use strict';
-
-
-
-
-
 moduloDocumento.controller('DocumentoViewController', ['$scope', '$routeParams', 'serverService','$location',
     function ($scope, $routeParams, serverService,$location) {
         $scope.title = "Vista de documento";

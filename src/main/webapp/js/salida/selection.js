@@ -29,12 +29,12 @@
 
 'use strict';
 
-moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
+moduloTipousuario.controller('TipousuarioSelectionController', ['$scope', '$routeParams', 'serverService', '$location', 'sharedSpaceService',
     function ($scope, $routeParams, serverService, $location, sharedSpaceService) {
 
-        $scope.ob = "usuario";
+        $scope.ob = "salida";
         $scope.op = "selection";
-        $scope.title = "Selección de usuario";
+        $scope.title = "Selección de salida";
         $scope.icon = "fa-user";
         $scope.neighbourhood = 2;
 
@@ -121,13 +121,7 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$routeParams'
         $scope.evaluateMax = function (lowEnd, highEnd) {
             return Math.max(lowEnd, highEnd);
         };
-        $scope.$watch('obj.obj_tipousuario.id', function () {
-            if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('tipousuario', $scope.obj.obj_tipousuario.id)).then(function (data2) {
-                    $scope.obj.obj_tipousuario = data2.message;
-                });
-            }
-        });
+
         $scope.dofilter = function () {
             if ($scope.filter != "" && $scope.filteroperator != "" && $scope.filtervalue != "") {
                 if ($routeParams.order && $routeParams.ordervalue) {
@@ -144,7 +138,7 @@ moduloUsuario.controller('UsuarioSelectionController', ['$scope', '$routeParams'
         };
 
         $scope.go = function (num) {
-            sharedSpaceService.getObject().obj_usuario.id = num;
+            sharedSpaceService.getObject().obj_tipousuario.id = num;
             sharedSpaceService.setFase(2);
             $location.path(sharedSpaceService.getReturnLink());
         };

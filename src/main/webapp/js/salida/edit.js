@@ -40,7 +40,7 @@ moduloSalida.controller('SalidaEditController', ['$scope', '$routeParams', '$loc
             serverService.getDataFromPromise(serverService.promise_getOne($scope.ob, $scope.id)).then(function (data) {
                 $scope.obj = data.message;
                 //date conversion
-//                $scope.obj.alta = serverService.date_toDate($scope.obj.alta);
+                $scope.obj.fecha_salida = serverService.date_toDate($scope.obj.fecha_salida);
 //                $scope.obj.cambio = serverService.date_toDate($scope.obj.cambio);
             });
         } else {
@@ -54,22 +54,22 @@ moduloSalida.controller('SalidaEditController', ['$scope', '$routeParams', '$loc
             $location.path('/' + foreignObjectName + '/selection/1/10');
         }
         $scope.save = function () {
-            var dateAltaAsString = $filter('date')($scope.obj.alta, "dd/MM/yyyy");
+            var dateAltaAsString = $filter('date')($scope.obj.fecha_salida, "dd/MM/yyyy");
 //            var dateCambioAsString = $filter('date')($scope.obj.cambio, "dd/MM/yyyy");
-//            $scope.obj.alta = dateAltaAsString;
+            $scope.obj.fecha_salida = dateAltaAsString;
 //            $scope.obj.cambio = dateCambioAsString;
-            //console.log({json: JSON.stringify(serverService.array_identificarArray($scope.obj))});            
+            console.log({json: JSON.stringify(serverService.array_identificarArray($scope.obj))});            
             serverService.getDataFromPromise(serverService.promise_setOne($scope.ob, {json: JSON.stringify(serverService.array_identificarArray($scope.obj))})).then(function (data) {
                 $scope.result = data;
             });
         };
-        $scope.$watch('obj.obj_tiposalida.id', function () {
-            if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('tiposalida', $scope.obj.obj_tiposalida.id)).then(function (data2) {
-                    $scope.obj.obj_tiposalida = data2.message;
-                });
-            }
-        });
+//        $scope.$watch('obj.obj_tiposalida.id', function () {
+//            if ($scope.obj) {
+//                serverService.getDataFromPromise(serverService.promise_getOne('tiposalida', $scope.obj.obj_tiposalida.id)).then(function (data2) {
+//                    $scope.obj.obj_tiposalida = data2.message;
+//                });
+//            }
+//        });
         $scope.$watch('obj.obj_usuario.id', function () {
             if ($scope.obj) {
                 serverService.getDataFromPromise(serverService.promise_getOne('usuario', $scope.obj.obj_usuario.id)).then(function (data2) {

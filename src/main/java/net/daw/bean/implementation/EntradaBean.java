@@ -93,7 +93,7 @@ public class EntradaBean implements GenericBean{
     public String getColumns() {
         String strColumns = "";
         strColumns += "id,";
-        strColumns += "fecha_entrada";
+        strColumns += "fecha_entrada,";
         strColumns += "id_usuario";
         return strColumns;
     }

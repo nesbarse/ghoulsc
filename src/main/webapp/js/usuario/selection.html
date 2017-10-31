@@ -99,9 +99,269 @@ THE SOFTWARE.
                             <div class="col-md-12 text-center">
                                 <p></p>
                                 <p>Campos visibles:</p>
+                                <span ng-repeat="m in meta">
+                                    <label>{{m.UltraShortName}}<input type="checkbox" ng-model="strict"></label>
+
+                                </span>
+
+
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div role="tabpanel" id="pane2" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p></p>
+                                <select id="selectFilter" class="form-control" name="filter" style="width: 160px" ng-model="filter">
+                                    <option style="display:none">selecciona un campo</option>                                    
+                                    <option value="id">Identificador</option>
+                                    <option value="nombre">Nombre</option>
+                                    <option value="apellidos">Apellidos</option>
+                                    <option value="login">Login</option>
+                                    <option value="password">Password</option>
+                                    <option value="puesto">Puesto</option>
+                                    <option value="mac_tlfn">Mac</option>
+                                    <option value="num_tlfn">Numero</option>
+                                    <option value="tipousuario">Tipo</option>
+                                </select>
+                                <select id="selectFilteroperator" class="form-control" name="filteroperator" width="80" style="width: 200px" ng-model="filteroperator">
+                                    <option style="display:none">selecciona una operacion</option>
+                                    <option value="like" ng-selected="true">contiene</option>
+                                    <option value="notlike">no contiene</option>
+                                    <option value="equals">es igual a</option>
+                                    <option value="notequalto">es distinto de</option>
+                                    <option value="less">es menor que</option>
+                                    <option value="lessorequal">es menor o igual que</option>
+                                    <option value="greater">es mayor que</option>
+                                    <option value="greaterorequal">es mayor o igual que</option>
+                                </select>
+                                <input id="inputFiltervalue" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="filtervalue">
+                                <input type="button" class="btn" id="btnFiltrar" name="btnFiltrar" value="Filtrar" ng-click="dofilter()" />
+
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" id="pane3" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p></p>
+                                <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
+                                    <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="searchText">
+                                    <input type="submit" class="btn" id="btnFiltrarClient" name="btnFiltrarClient" value="Filtrar">
+                                </form>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" id="pane4" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p><br>
+                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="datos" ng-show="!status">
+        <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
+            <thead>             
+                <tr>                                                   
+                    <th class="text-right">
+                        Identificador
+                        <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Login</th>
+                    <th>Password</th>
+                    <th>Puesto</th>
+                    <th>Mac_tlfn</th>
+                    <th>Num_tlfn</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="obj in page">
+                    <td  class="text-right">{{obj.id}}</td>
+                    <td>{{obj.nombre}}</td>
+                    <td>{{obj.apellidos}}</td>
+                    <td>{{obj.login}}</td>
+                    <td>{{obj.password}}</td>
+                    <td>{{obj.puesto}}</td>
+                    <td>{{obj.mac_tlfn}}</td>
+                    <td>{{obj.num_tlfn}}</td>
+                    <td>{{obj.obj_tipousuario.descripcion}}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="seleccionar">
+                            <a class="btn btn-default action02" ng-click="go(obj.id)"><i class="fa fa-check fa-2g"></i> Seleccionar</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>            
+    </div>
+</div>
+<div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
+
+openAUSIAS: The stunning micro-library that helps you to develop easily
+            AJAX web applications by using Java and jQuery
+openAUSIAS is distributed under the MIT License (MIT)
+Sources at https://github.com/rafaelaznar/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+<div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+<div class="panel-body"  ng-cloak>
+    <div class="row">
+        <div class="col-xs-12" ng-show="!status">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a>
+                    </li>
+                    <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
+                    <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
+                    <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
+                    <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" id="pane0" class="tab-pane fade active in">
+                        <p></p>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <p>Mostrando una consulta de {{registers}} registros.</p>
+                                <p ng-show="orderParams == ''">Contenido no ordenado</p>
+                                <p ng-show="orderParams != ''"><small>Contenido ordenado por {{order}} ({{ordervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutOrder.replace('&', '?')}}" id="linkQuitarOrden">(Quitar orden)</a></small></p>
+                                <p ng-show="filterParams == ''">Contenido no filtrado</p>
+                                <p ng-show="filterParams != ''"><small>Contenido filtrado ({{filter}} {{filteroperator}} {{filtervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutFilter.replace('&', '?')}}" id="linkQuitarFiltro">(Quitar filtro)</a></small></p>
+                            </div>
+
+                            <div class="col-lg-6  col-md-6 col-sm-8 text-center">
+                                Paginación: <br>
+                                <ul class="pagination">
+                                    <li><a class="pagination_link" ng-show="numpage > 1" ng-attr-id="{{numpage - 1}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + (numpage - 1) + '/' + rpp + params}}">prev</a></li>
+                                    <li><a class="pagination_link" id="1" ng-attr-href="{{'#/' + ob + '/' + op + '/1/' + rpp + params}}" ng-show="numpage > neighbourhood + 1">1</a></li>
+
+                                    <li class="pagination_link disabled"><a href="#" ng-show="numpage > neighbourhood - -2">ooo</a></li>
+
+                                    <li ng-repeat="i in getRangeArray(evaluateMax(1, numpage - neighbourhood), (numpage - 1))">
+                                        <a class="pagination_link" ng-attr-id="{{i}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + i + '/' + rpp + params}}">{{i}}</a>
+                                    </li>
+
+                                    <li class="active" ng-show="(numpage >= 1) && (numpage <= pages)">
+                                        <a class="pagination_link" ng-attr-id="{{numpage}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + numpage + '/' + rpp + params}}">{{numpage}}</a>
+                                    </li>
+
+                                    <li ng-repeat="j in getRangeArray(numpage - -1, evaluateMin(numpage - -neighbourhood, pages))">
+                                        <a class="pagination_link" ng-attr-id="{{j}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + j + '/' + rpp + params}}">{{j}}</a>
+                                    </li>
+
+                                    <li class="pagination_link disabled"><a href="#" ng-show="numpage < (pages - (neighbourhood - -1))">ooo</a></li>
+
+                                    <li><a class="pagination_link" ng-show="numpage < pages - neighbourhood" ng-attr-id="{{pages}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + pages + '/' + rpp + params}}">{{pages}}</a></li>
+                                    <li><a class="pagination_link" ng-show="numpage < pages" ng-attr-id="{{numpage - -1}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + (numpage - -1) + '/' + rpp + params}}">next</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-4 text-center">
+                                Registros por página: <br>
+                                <ul class="pagination">
+                                    <li class="active" ng-show="rpp == 10"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/10' + params}}">10</a></li>
+                                    <li ng-show="rpp != 10"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/10' + params}}">10</a></li>            
+                                    <li class="active" ng-show="rpp == 50"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/50' + params}}">50</a></li>
+                                    <li ng-show="rpp != 50"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/50' + params}}">50</a></li>
+                                    <li class="active" ng-show="rpp == 100"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/100' + params}}">100</a></li>
+                                    <li ng-show="rpp != 100"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/100' + params}}">100</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+
+                   
+                    <div role="tabpanel" id="pane1" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p></p>
+                                <p>Campos visibles:</p>
                                 <input type="checkbox" ng-model="visibles.id" ng-checked="visibles.id">Ident.
+                                <input type="checkbox" ng-model="visibles.nombre" ng-checked="visibles.nombre" >Nombre
+                                <input type="checkbox" ng-model="visibles.apellidos" ng-checked="visibles.apellidos" >Apellidos
                                 <input type="checkbox" ng-model="visibles.login" ng-checked="visibles.login" >Login
                                 <input type="checkbox" ng-model="visibles.password" ng-checked="visibles.password">Password
+                                <input type="checkbox" ng-model="visibles.puesto" ng-checked="visibles.puesto" >Puesto
+                                <input type="checkbox" ng-model="visibles.mac_tlfn" ng-checked="visibles.mac_tlfn" >Mac_tlfn
+                                <input type="checkbox" ng-model="visibles.num_tlfn" ng-checked="visibles.num_tlfn" >Num_tlfn
                                 <input type="checkbox" ng-model="visibles.id_tipousuario" ng-checked="visibles.id_tipousuario">Tipo de usuario
                                 <input type="checkbox" ng-model="visibles.id_estado" ng-checked="visibles.id_estado">Estado del usuario
                                 <input type="checkbox" ng-model="visibles.ciudad" ng-checked="visibles.ciudad">Ciudad
@@ -124,8 +384,13 @@ THE SOFTWARE.
                                     <select id="selectFilter" class="form-control" name="filter" style="width: 160px" ng-model="filter">
                                         <option style="display:none">selecciona un campo</option>                                    
                                         <option value="id">Identificador</option>
+                                        <option value="nombre">Nombre</option>
+                                        <option value="apellidos">Apellidos</option>
                                         <option value="login">Login</option>
                                         <option value="password">Password</option>
+                                        <option value="puesto">Puesto</option>
+                                        <option value="mac_tlfn">Mac_tlfn</option>
+                                        <option value="num_tlfn">Num_tlfn</option>
                                         <option value="id_tipousuario">Tipo</option>
                                         <option value="id_estado">Estado</option>
                                         <option value="ciudad">Ciudad</option>
@@ -183,6 +448,16 @@ THE SOFTWARE.
                         <a ng-show="visibles.id" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
                         <a ng-show="visibles.id" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
                     </th>
+                     <th ng-show="visibles.nombre" class="text-center">
+                        Nombre<br/>
+                        <a ng-show="visibles.nombre" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=nombre&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.nombre" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=nombre&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
+                     <th ng-show="visibles.apellidos" class="text-center">
+                        Apellidos<br/>
+                        <a ng-show="visibles.apellidos" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=apellidos&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.apellidos" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=apellidos&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
                     <th ng-show="visibles.login" class="text-center">
                         Login<br/>
                         <a ng-show="visibles.login" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=login&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
@@ -193,6 +468,21 @@ THE SOFTWARE.
                         <a ng-show="visibles.password" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=password&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
                         <a ng-show="visibles.password" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=password&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
 
+                    </th>
+                     <th ng-show="visibles.puesto" class="text-center">
+                        Puesto<br/>
+                        <a ng-show="visibles.puesto" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=puesto&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.puesto" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=puesto&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
+                     <th ng-show="visibles.mac_tlfn" class="text-center">
+                        Mac_Tlfn<br/>
+                        <a ng-show="visibles.mac_tlfn" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=mac_tlfn&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.mac_tlfn" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=mac_tlfn&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
+                     <th ng-show="visibles.num_tlfn" class="text-center">
+                        Num_Tlfn<br/>
+                        <a ng-show="visibles.num_tlfn" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=num_tlfn&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.num_tlfn" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=num_tlfn&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
                     </th>
                     <th  ng-show="visibles.id_estado" class="text-center">
                         Estado<br/>
@@ -227,13 +517,16 @@ THE SOFTWARE.
             <tbody>
                 <tr ng-repeat="obj in page| filter:searchText">
                     <td ng-show="visibles.id" class="text-right">{{obj.id}}</td>
+                    <td ng-show="visibles.nombre">{{obj.nombre}}</td>
+                    <td ng-show="visibles.apellidos">{{obj.apellidos}}</td>
                     <td ng-show="visibles.login">{{obj.login}}</td>
                     <td ng-show="visibles.password">{{obj.password}}</td>                                                       
                     <td ng-show="visibles.id_estado"><a href="#/estado/view/{{obj.obj_estado.id}}">{{obj.obj_estado.tipo}}</a></td>
+                    <td ng-show="visibles.puesto">{{obj.puesto}}</td>
+                    <td ng-show="visibles.mac_tlfn">{{obj.mac_tlfn}}</td>
+                    <td ng-show="visibles.num_tlfn">{{obj.num_tlfn}}</td>
                     <td ng-show="visibles.id_tipousuario"><a href="#/tipousuario/view/{{obj.obj_tipousuario.id}}">{{obj.obj_tipousuario.descripcion}}</a></td>
-                    <td ng-show="visibles.ciudad">{{obj.ciudad}}</td>
-                    <td ng-show="visibles.firma">{{obj.firma|clipString}}</td>
-                    <td ng-show="visibles.skin">{{obj.skin}}</td>
+                    
                     <td>
                         <div class="btn-group" role="group" aria-label="seleccionar">
                             <a class="btn btn-default action02" ng-click="go(obj.id)"><i class="fa fa-check fa-2g"></i> Seleccionar</a>
@@ -245,5 +538,5 @@ THE SOFTWARE.
     </div>
 </div>
 <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
-
+-->
 

@@ -26,13 +26,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+<div class="panel-body">
+    <div class="row-fluid">
+        <div class="span6 offset3">                
+            <table class="table table-striped table-condensed">
+                <thead>                
+                    <tr>    
+                        <th>campo</th>
+                        <th>valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>id</td><td>{{bean.id}}</td></tr>       
+                    <tr><td>titulo</td><td>{{bean.fecha_entrada}}</td></tr> 
+                    <!--<tr><td>contenido</td><td>{{bean.contenido| clipString}}</td></tr>--> 
+<!--                    <tr><td>alta</td><td>{{bean.alta}}</td></tr> 
+                    <tr><td>cambio</td><td>{{bean.cambio}}</td></tr> 
+                    <tr><td>hits</td><td>{{bean.hits}}</td></tr> 
+                    <tr><td>etiquetas</td><td>{{bean.etiquetas}}</td></tr> -->
+                    <tr>
+                        <td>usuario</td>
+                        <td>
+                            <a href="#/usuario/view/{{bean.obj_usuario.id}}">{{bean.obj_usuario.login}}</a>
+                        </td>
+                    </tr> 
+<!--                    <tr>
+                        <td>tipo de entrada</td>
+                        <td>
+                            <a href="#/tipoentrada/view/{{bean.obj_tipoentrada.id}}">{{bean.obj_tipoentrada.descripcion}}</a>
+                        </td>
+                    </tr> -->
+<!--                    <tr><td>publicado</td><td>{{bean.publicado}}</td></tr> 
+                    <tr><td>portada</td><td>{{bean.portada}}</td></tr> 
+                    <tr><td>destacado</td><td>{{bean.destacado}}</td></tr> -->
+                </tbody>
+            </table>  
+            <div class="text-right" > 
+                <a class="btn btn-primary" href="#/entrada/edit/{{bean.id}}">Editar</a>
+                <a class="btn btn-danger" href="#/entrada/remove/{{bean.id}}">Borrar</a>
+                   <a class="btn btn-default" ng-click="plist()">Ir al listado de entradas</a>
+                <a class="btn btn-default" ng-click="close()">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>

@@ -31,6 +31,7 @@ import com.google.gson.annotations.Expose;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.daw.bean.publicinterface.GenericBean;
 import net.daw.dao.implementation.UsuarioDao;
@@ -51,6 +52,10 @@ public class SalidaBean implements GenericBean {
     @Expose(deserialize = false)
     private UsuarioBean obj_usuario;
     
+    
+    private SimpleDateFormat dt = new SimpleDateFormat ("yyyyy-mm-dd hh:mm:ss");
+    
+    
      public SalidaBean() {
     }
 
@@ -67,8 +72,8 @@ public class SalidaBean implements GenericBean {
         this.id = id;
     }
 
-    public Date getFecha_salida() {
-        return fecha_salida;
+    public String getFecha_salida() {
+        return dt.format(fecha_salida);
     }
 
     public void setFecha_salida(Date fecha_salida) {
@@ -95,7 +100,7 @@ public class SalidaBean implements GenericBean {
     public String getColumns() {
        String strColumns = "";
         strColumns += "id,";
-        strColumns += "fecha_salida";
+        strColumns += "fecha_salida,";
         strColumns += "id_usuario";
         return strColumns;
     }

@@ -63,7 +63,7 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/usuario/edit/:id', {templateUrl: 'js/usuario/newedit.html', controller: 'UsuarioEditController'});
         $routeProvider.when('/usuario/remove/:id', {templateUrl: 'js/usuario/remove.html', controller: 'UsuarioRemoveController'});
         $routeProvider.when('/usuario/plist/:page?/:rpp?', {templateUrl: 'js/usuario/plist.html', controller: 'UsuarioPListController'});
-        $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/tipousuario/selection.html', controller: 'UsuarioSelectionController'});
+        $routeProvider.when('/usuario/selection/:page?/:rpp?', {templateUrl: 'js/usuario/selection.html', controller: 'UsuarioSelectionController'});
         //------------
         $routeProvider.when('/tipodocumento/view/:id', {templateUrl: 'js/tipodocumento/view.html', controller: 'TipodocumentoViewController'});
         $routeProvider.when('/tipodocumento/selection/:page?/:rpp?', {templateUrl: 'js/tipodocumento/selection.html', controller: 'TipodocumentoSelectionController'});
@@ -72,17 +72,17 @@ openAusias.config(['$routeProvider', function ($routeProvider) {
         //------------
         $routeProvider.when('/estado/selection/:page?/:rpp?', {templateUrl: 'js/estado/selection.html', controller: 'EstadoSelectionController'});        
         //------------
-        $routeProvider.when('/salida/view/:id', {templateUrl: 'js/salida/view.html', controller: 'DocumentoViewController'});
-        $routeProvider.when('/salida/new', {templateUrl: 'js/salida/newedit.html', controller: 'DocumentoNewController'});
-        $routeProvider.when('/salida/edit/:id', {templateUrl: 'js/salida/newedit.html', controller: 'DocumentoEditController'});
-        $routeProvider.when('/salida/remove/:id', {templateUrl: 'js/salida/remove.html', controller: 'DocumentoRemoveController'});
-        $routeProvider.when('/salida/plist/:page?/:rpp?', {templateUrl: 'js/salida/plist.html', controller: 'DocumentoPListController'});
+        $routeProvider.when('/salida/view/:id', {templateUrl: 'js/salida/view.html', controller: 'SalidaViewController'});
+        $routeProvider.when('/salida/new', {templateUrl: 'js/salida/newedit.html', controller: 'SalidaNewController'});
+        $routeProvider.when('/salida/edit/:id', {templateUrl: 'js/salida/newedit.html', controller: 'SalidaEditController'});
+        $routeProvider.when('/salida/remove/:id', {templateUrl: 'js/salida/remove.html', controller: 'SalidaRemoveController'});
+        $routeProvider.when('/salida/plist/:page?/:rpp?', {templateUrl: 'js/salida/plist.html', controller: 'SalidaPListController'});
         //------------
-        $routeProvider.when('/entrada/view/:id', {templateUrl: 'js/entrada/view.html', controller: 'DocumentoViewController'});
-        $routeProvider.when('/entrada/new', {templateUrl: 'js/entrada/newedit.html', controller: 'DocumentoNewController'});
-        $routeProvider.when('/entrada/edit/:id', {templateUrl: 'js/entrada/newedit.html', controller: 'DocumentoEditController'});
-        $routeProvider.when('/entrada/remove/:id', {templateUrl: 'js/entrada/remove.html', controller: 'DocumentoRemoveController'});
-        $routeProvider.when('/entrada/plist/:page?/:rpp?', {templateUrl: 'js/entrada/plist.html', controller: 'DocumentoPListController'});
+        $routeProvider.when('/entrada/view/:id', {templateUrl: 'js/entrada/view.html', controller: 'EntradaViewController'});
+        $routeProvider.when('/entrada/new', {templateUrl: 'js/entrada/newedit.html', controller: 'EntradaNewController'});
+        $routeProvider.when('/entrada/edit/:id', {templateUrl: 'js/entrada/newedit.html', controller: 'EntradaEditController'});
+        $routeProvider.when('/entrada/remove/:id', {templateUrl: 'js/entrada/remove.html', controller: 'EntradaRemoveController'});
+        $routeProvider.when('/entrada/plist/:page?/:rpp?', {templateUrl: 'js/entrada/plist.html', controller: 'EntradaPListController'});
         //------------
         $routeProvider.otherwise({redirectTo: '/'});
 

@@ -150,13 +150,13 @@ public class UsuarioBean implements GenericBean{
     public String toJson(Boolean expand) {
         String strJson = "{";
         strJson += "id:" + id + ",";
-        strJson += "nombre=" + EncodingUtilHelper.quotate(nombre) + ",";
-        strJson += "primerapellido=" + EncodingUtilHelper.quotate(apellidos) + ",";
+        strJson += "nombre:" + EncodingUtilHelper.quotate(nombre) + ",";
+        strJson += "apellidos:" + EncodingUtilHelper.quotate(apellidos) + ",";
         strJson += "login:" + EncodingUtilHelper.quotate(login) + ",";
         strJson += "password:" + EncodingUtilHelper.quotate(password) + ",";
-        strJson += "puesto=" + EncodingUtilHelper.quotate(puesto) + ",";
-        strJson += "mac_tlfn=" + EncodingUtilHelper.quotate(mac_tlfn) + ",";
-        strJson += "num_tlfn=" + EncodingUtilHelper.quotate(num_tlfn) + ",";
+        strJson += "puesto:" + EncodingUtilHelper.quotate(puesto) + ",";
+        strJson += "mac_tlfn:" + EncodingUtilHelper.quotate(mac_tlfn) + ",";
+        strJson += "num_tlfn:" + EncodingUtilHelper.quotate(num_tlfn) + ",";
         if (expand) {
             strJson += "obj_tipousuario:" + obj_tipousuario.toJson(false) + ",";
         } else {
@@ -185,8 +185,13 @@ public class UsuarioBean implements GenericBean{
     public String getValues() {
         String strColumns = "";
         strColumns += id + ",";
+        strColumns += EncodingUtilHelper.quotate(nombre) + ",";
+        strColumns += EncodingUtilHelper.quotate(apellidos) + ",";
         strColumns += EncodingUtilHelper.quotate(login) + ",";
         strColumns += EncodingUtilHelper.quotate(password) + ",";
+        strColumns += EncodingUtilHelper.quotate(puesto) + ",";
+        strColumns += EncodingUtilHelper.quotate(mac_tlfn) + ",";
+        strColumns += EncodingUtilHelper.quotate(num_tlfn) + ",";
         strColumns += id_tipousuario;
 
         return strColumns;
@@ -210,8 +215,13 @@ public class UsuarioBean implements GenericBean{
     @Override
     public UsuarioBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
         this.setId(oResultSet.getInt("id"));
+        this.setNombre(oResultSet.getString("nombre"));
+        this.setApellidos(oResultSet.getString("apellidos"));
         this.setLogin(oResultSet.getString("login"));
         this.setPassword(oResultSet.getString("password"));
+        this.setPuesto(oResultSet.getString("puesto"));
+        this.setMac_tlfn(oResultSet.getString("mac_tlfn"));
+        this.setNum_tlfn(oResultSet.getString("num_tlfn"));
         if (expand > 0) {
             TipousuarioBean oTipousuarioBean = new TipousuarioBean();
             TipousuarioDao oTipousuarioDao = new TipousuarioDao(pooledConnection);

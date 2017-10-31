@@ -26,13 +26,266 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<div class="panel-heading" style="font-family:Oswald , serif;"  ng-include="'js/system/header.html'"></div>
+<div class="panel-body"  ng-cloak>
+    <div class="row">
+        <div class="col-xs-12" ng-show="!status">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a>
+                    </li>
+                    <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
+                    <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
+                    <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
+                    <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" id="pane0" class="tab-pane fade active in">
+                        <p></p>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <p>Mostrando una consulta de {{registers}} registros.</p>
+                                <p ng-show="orderParams == ''">Usuario no ordenado</p>
+                                <p ng-show="orderParams != ''"><small>Usuario ordenado por {{order}} ({{ordervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutOrder.replace('&', '?')}}" id="linkQuitarOrden">(Quitar orden)</a></small></p>
+                                <p ng-show="filterParams == ''">Usuario no filtrado</p>
+                                <p ng-show="filterParams != ''"><small>Usuario filtrado ({{filter}} {{filteroperator}} {{filtervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutFilter.replace('&', '?')}}" id="linkQuitarFiltro">(Quitar filtro)</a></small></p>
+                            </div>
+
+                            <div class="col-lg-6  col-md-6 col-sm-8 text-center">
+                                Paginación: <br>
+                                <ul class="pagination">
+                                    <li><a class="pagination_link" ng-show="numpage > 1" ng-attr-id="{{numpage - 1}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + (numpage - 1) + '/' + rpp + params}}">prev</a></li>
+                                    <li><a class="pagination_link" id="1" ng-attr-href="{{'#/' + ob + '/' + op + '/1/' + rpp + params}}" ng-show="numpage > neighbourhood + 1">1</a></li>
+
+                                    <li class="pagination_link disabled"><a href="#" ng-show="numpage > neighbourhood - -2">ooo</a></li>
+
+                                    <li ng-repeat="i in getRangeArray(evaluateMax(1, numpage - neighbourhood), (numpage - 1))">
+                                        <a class="pagination_link" ng-attr-id="{{i}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + i + '/' + rpp + params}}">{{i}}</a>
+                                    </li>
+
+                                    <li class="active" ng-show="(numpage >= 1) && (numpage <= pages)">
+                                        <a class="pagination_link" ng-attr-id="{{numpage}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + numpage + '/' + rpp + params}}">{{numpage}}</a>
+                                    </li>
+
+                                    <li ng-repeat="j in getRangeArray(numpage - -1, evaluateMin(numpage - -neighbourhood, pages))">
+                                        <a class="pagination_link" ng-attr-id="{{j}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + j + '/' + rpp + params}}">{{j}}</a>
+                                    </li>
+
+                                    <li class="pagination_link disabled"><a href="#" ng-show="numpage < (pages - (neighbourhood - -1))">ooo</a></li>
+
+                                    <li><a class="pagination_link" ng-show="numpage < pages - neighbourhood" ng-attr-id="{{pages}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + pages + '/' + rpp + params}}">{{pages}}</a></li>
+                                    <li><a class="pagination_link" ng-show="numpage < pages" ng-attr-id="{{numpage - -1}}" ng-attr-href="{{'#/' + ob + '/' + op + '/' + (numpage - -1) + '/' + rpp + params}}">next</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-lg-3  col-md-3 col-sm-4 text-center">
+                                Registros por página: <br>
+                                <ul class="pagination">
+                                    <li class="active" ng-show="rpp == 10"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/10' + params}}">10</a></li>
+                                    <li ng-show="rpp != 10"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/10' + params}}">10</a></li>            
+                                    <li class="active" ng-show="rpp == 50"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/50' + params}}">50</a></li>
+                                    <li ng-show="rpp != 50"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/50' + params}}">50</a></li>
+                                    <li class="active" ng-show="rpp == 100"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/100' + params}}">100</a></li>
+                                    <li ng-show="rpp != 100"><a class="rpp_link" id="10" href="{{'#/' + ob + '/' + op + '/' + numpage + '/100' + params}}">100</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p></p>
+                    </div>
+
+
+                    <div role="tabpanel" id="pane1" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p></p>
+                                <p>Campos visibles:</p>
+                                <input type="checkbox" ng-model="visibles.id" ng-checked="visibles.id">Ident.
+                                <input type="checkbox" ng-model="visibles.fecha_salida" ng-checked="visibles.fecha_salida" >Fecha Salida
+                                <input type="checkbox" ng-model="visibles.id_usuario" ng-checked="visibles.id_usuario">Usuario
+                                <!--<input type="checkbox" ng-model="visibles.alta" ng-checked="visibles.alta">Alta-->
+<!--                                <input type="checkbox" ng-model="visibles.cambio" ng-checked="visibles.cambio">Último cambio
+                                <input type="checkbox" ng-model="visibles.hits" ng-checked="visibles.hits">Visitas
+                                <input type="checkbox" ng-model="visibles.id_usuario" ng-checked="visibles.id_usuario">Usuario
+                                <input type="checkbox" ng-model="visibles.id_tipodocumento" ng-checked="visibles.id_tipodocumento">Tipo
+                                <input type="checkbox" ng-model="visibles.etiquetas" ng-checked="visibles.etiquetas">Etiquetas
+                                <input type="checkbox" ng-model="visibles.publicado" ng-checked="visibles.publicado">Publicado
+                                <input type="checkbox" ng-model="visibles.portada" ng-checked="visibles.portada">Portada
+                                <input type="checkbox" ng-model="visibles.destacado" ng-checked="visibles.destacado">Destacado                                                                                                                              -->
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" id="pane2" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p></p>
+                                <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="filterForm">
+                                    <select id="selectFilter" class="form-control" name="filter" style="width: 160px" ng-model="filter">
+                                        <option style="display:none">selecciona un campo</option>
+                                        <option value="id">Identificador</option>
+                                        <option value="fecha_salida">Fecha Salida</option>
+                                        <option value="id_usuario">Usuario</option>
+<!--                                        <option value="alta">Alta</option>
+                                        <option value="cambio">Último cambio</option>
+                                        <option value="hits">Visitas</option>
+                                        <option value="id_usuario">Usuario</option>                                    
+                                        <option value="id_tipodocumento">Tipo</option>
+                                        <option value="etiquetas">Etiquetas</option>
+                                        <option value="publicado">¿Publicado?</option>
+                                        <option value="portada">¿Portada?</option>
+                                        <option value="destacado">¿Destacado?</option>                                                   -->
+                                    </select>
+                                    <select id="selectFilteroperator" class="form-control" name="filteroperator" width="80" style="width: 200px" ng-model="filteroperator">
+                                        <option style="display:none">selecciona una operacion</option>
+                                        <option value="like" ng-selected="true">contiene</option>
+                                        <option value="notlike">no contiene</option>
+                                        <option value="equals">es igual a</option>
+                                        <option value="notequalto">es distinto de</option>
+                                        <option value="less">es menor que</option>
+                                        <option value="lessorequal">es menor o igual que</option>
+                                        <option value="greater">es mayor que</option>
+                                        <option value="greaterorequal">es mayor o igual que</option>
+                                    </select>
+                                    <input id="inputFiltervalue" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="filtervalue">
+                                    <input type="button" class="btn" id="btnFiltrar" name="btnFiltrar" value="Filtrar" ng-click="dofilter()" />
+                                </form>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" id="pane3" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p></p>
+                                <form class="navbar-form navbar-right" role="form" action="Controller" method="post" id="empresaForm">
+                                    <input id="inputFiltervalueClient" class="form-control" name="filtervalue" type="text" size="20" maxlength="50" value="" width="100" style="width: 140px" placeholder="Valor" ng-model="searchText">
+
+                                </form>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" id="pane4" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p><br>
+                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="datos" ng-show="!status">
+        <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
+            <thead>             
+                <tr>                                                   
+                    <th ng-show="visibles.id" class="text-center">
+                        Identificador<br/>
+                        <a ng-show="visibles.id" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.id" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.fecha_salida"  class="text-center">
+                        Fecha Salida<br/>
+                        <a ng-show="visibles.fecha_salida" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=fecha_salida&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.fecha_salida" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=fecha_salida&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
+                    <th ng-show="visibles.id_usuario"  class="text-center">
+                        Usuario<br/>
+                        <a ng-show="visibles.id_usuario" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id_usuario&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.id_usuario" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id_usuario&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+<!--                    <th ng-show="visibles.alta" class="text-center">
+                        Alta<br/>
+                        <a ng-show="visibles.alta" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.alta" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.cambio" class="text-center">
+                        Último cambio<br/>
+                        <a ng-show="visibles.cambio" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.cambio" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.hits" class="text-center"">
+                        Visitas<br/>
+                        <a ng-show="visibles.hits" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.hits" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.id_usuario" class="text-center">
+                        Usuario<br/>
+                        <a ng-show="visibles.id_usuario" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.id_usuario" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.id_tipodocumento" class="text-center">
+                        Tipo<br/>
+                        <a ng-show="visibles.id_tipodocumento" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.id_tipodocumento" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.etiquetas" class="text-center">
+                        Etiquetas<br/>
+                        <a ng-show="visibles.etiquetas" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.etiquetas" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.publicado" class="text-center">
+                        ¿Publicado?<br/>
+                        <a ng-show="visibles.publicado" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.publicado" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.portada" class="text-center">
+                        ¿Portada?<br/>
+                        <a ng-show="visibles.portada" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.portada" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>
+                    <th ng-show="visibles.destacado" class="text-center">
+                        ¿Destacado?<br/>
+                        <a ng-show="visibles.destacado" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.destacado" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+
+                    </th>-->
+                    <th  class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="obj in page| filter:searchText">
+                    <td ng-show="visibles.id"  class="text-right">{{obj.id}}</td>
+                    <td ng-show="visibles.fecha_salida">{{obj.fecha_salida}}</td>
+                    <td ng-show="visibles.id_usuario"><a href="#/usuario/view/{{obj.obj_usuario.id}}">{{obj.obj_usuario.nombre}}</a></td>
+<!--                    <td ng-show="visibles.alta">{{obj.alta}}</td>
+                    <td ng-show="visibles.cambio">{{obj.cambio}}</td>
+                    <td ng-show="visibles.hits" class="text-right">{{obj.hits}}</td>
+                    <td ng-show="visibles.id_usuario"><a href="#/usuario/view/{{obj.obj_usuario.id}}">{{obj.obj_usuario.login}}</a></td>
+                    <td ng-show="visibles.id_tipodocumento"><a href="#/tipodocumento/view/{{obj.obj_tipodocumento.id}}">{{obj.obj_tipodocumento.descripcion}}</a></td>
+                    <td ng-show="visibles.etiquetas">{{obj.etiquetas}}</td>
+                    <td ng-show="visibles.publicado" class="text-center" ng-bind-html="obj.publicado | booleanizate"></td>
+                    <td ng-show="visibles.portada" class="text-center" ng-bind-html="obj.portada | booleanizate"></td>
+                    <td ng-show="visibles.destacado" class="text-center" ng-bind-html="obj.destacado | booleanizate"></td>-->
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Acciones<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="btn btn-default action02" href="#/salida/view/{{obj.id}}"><i class="fa fa-eye fa-2g"></i> Ver</a></li>
+                                <li><a class="btn btn-default action03" href="#/salida/edit/{{obj.id}}"><i class="fa fa-pencil fa-2g"></i> Editar</a></li>
+                                <li><a class="btn btn-default action04" href="#/salida/remove/{{obj.id}}"><i class="fa fa-times fa-2g"></i> Borrar</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>            
+    </div>
+</div>
+<div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/footer.html'"></div>
