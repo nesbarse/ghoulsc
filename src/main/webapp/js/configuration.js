@@ -51,6 +51,7 @@ configuration = {
         //$('<link href="http://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"/>').appendTo("head");
         $('<link href="css/main/fonts/fonts.css" rel="stylesheet" type="text/css"/>').appendTo("head");        
         $('<link href="css/main/main.css" rel="stylesheet" type="text/css"/>').appendTo("head");
+        $('<link href="css/main/menu.css" rel="stylesheet" type="text/css"/>').appendTo("head");
 
         
     }
