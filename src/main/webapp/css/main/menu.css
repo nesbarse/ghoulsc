@@ -67,19 +67,39 @@ li.dropdown.broth_show_when_logged_in:hover{
 span#broth_username_id{
     color: white;
 }
+
+.dropdown-toggle i.fa.fa-user{
+    display: none;
+}
+
+span#broth_username_id:hover {
+    color: #09aae4;
+}
+
+a.dropdown-toggle:focus{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 4px;
+   border-bottom-right-radius: 25px;
+   border-bottom-left-radius: 3px;
+}
 /*span#broth_username_id:hover{
     color: #09aae4;
 }
 span#broth_username_id:focus{
     color: #09aae4;
 }*/
-
+span#broth_username_id:focus{
+    color: #09aae4;
+}
 i.fa.fa-user{
     color: white;
 }
 
 b.caret{
     color: white;
+}
+a.navbar-brand{
+    display: none;
 }
 
 .dropdown-toggle:hover{

@@ -32,26 +32,29 @@ THE SOFTWARE.
         <div class="col-xs-12" ng-show="!status">
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a>
-                    </li>
-                    <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
+<!--                    <li role="presentation" class="active">
+                        <a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a>
+                    </li>-->
+<!--                    <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
                     <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
                     <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
-                    <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>
+                    <li role="presentation"></li>-->
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" id="pane0" class="tab-pane fade active in">
                         <p></p>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12">
-                                <p>Mostrando una consulta de {{registers}} registros.</p>
+<!--                                <p>Mostrando una consulta de {{registers}} registros.</p>
                                 <p ng-show="orderParams == ''">Usuario no ordenado</p>
                                 <p ng-show="orderParams != ''"><small>Usuario ordenado por {{order}} ({{ordervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutOrder.replace('&', '?')}}" id="linkQuitarOrden">(Quitar orden)</a></small></p>
                                 <p ng-show="filterParams == ''">Usuario no filtrado</p>
-                                <p ng-show="filterParams != ''"><small>Usuario filtrado ({{filter}} {{filteroperator}} {{filtervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutFilter.replace('&', '?')}}" id="linkQuitarFiltro">(Quitar filtro)</a></small></p>
+                                <p ng-show="filterParams != ''"><small>Usuario filtrado ({{filter}} {{filteroperator}} {{filtervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutFilter.replace('&', '?')}}" id="linkQuitarFiltro">(Quitar filtro)</a></small></p>-->
                             </div>
 
+                            <!--<div role="tabpanel" id="pane4" class="tab-pane fade">-->
+                        
+                    <!--</div>-->
                             <div class="col-lg-6  col-md-6 col-sm-8 text-center">
                                 Paginación: <br>
                                 <ul class="pagination">
@@ -166,15 +169,7 @@ THE SOFTWARE.
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" id="pane4" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <p><br>
-                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -257,6 +252,14 @@ THE SOFTWARE.
                     <th  class="text-center">Acciones</th>
                 </tr>
             </thead>
+            
+            <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p><br>
+                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                                </p>
+                            </div>
+                        </div>
             <tbody>
                 <tr ng-repeat="obj in page| filter:searchText">
                     <td ng-show="visibles.id"  class="text-right">{{obj.id}}</td>

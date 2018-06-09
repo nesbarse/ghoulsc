@@ -1,0 +1,161 @@
+/*
+Copyright (c) 2015 by Rafael Angel Aznar Aparici (rafaaznar at gmail dot com)
+
+openAUSIAS: The stunning micro-library that helps you to develop easily 
+            AJAX web applications by using Java and jQuery
+openAUSIAS is distributed under the MIT License (MIT)
+Sources at https://github.com/rafaelaznar/
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+*/
+/* 
+    Created on : 09-jun-2018, 23:04:33
+    Author     : Casa
+*/
+
+h1#broth_title{
+    color: #09aae4;
+}
+
+/*html.no-js.ng-scope{
+    background-color: white;
+}
+*/body{
+    background-color: white;
+}/*
+
+*/
+
+/*.container-fluid{
+    background-color: white
+        
+}*/
+
+.panel-heading.ng-scope{
+    background-color: white;
+}/*
+
+*/#broth_operationicon{
+    display: none;
+}/*
+
+*/.panel-footer.ng-scope{
+    background-color: white;
+    border:none;
+}/*
+
+*/.panel.panel-default{
+    border: none
+}
+
+ul.nav.nav-tabs{
+    border: none;
+}
+
+.panel-heading.ng-scope{
+    border: none;
+}
+
+.panel-footer.ng-scope{
+    display: none;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus{
+    background-color: #09aae4;
+    border-color: #09aae4;
+}
+.pagination > li > a, .pagination > li > span{
+    color: #09aae4;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus{
+    color: white;
+    background-color: #09aae4;
+    opacity: 0.6;
+}
+
+.col-lg-3.col-md-3.col-sm-4.text-center{
+    color: transparent;
+}
+
+.col-lg-6.col-md-6.col-sm-8.text-center{
+    color: transparent;
+}
+
+.btn-primary{
+    color: white;
+    background-color: #09aae4;
+    border-color: #09aae4;
+        margin-bottom: 50px;
+
+}
+
+.btn-primary:hover{
+    color: white;
+    background-color: #09aae4;
+    border-color: #09aae4;
+    opacity: 0.6;
+    margin-bottom: 50px;
+}
+
+.table-bordered{
+    border: none;
+}
+
+.table > thead > tr > th{
+    border: none;
+    border-bottom: 2px solid #09aae4 !important;
+    color: #09aae4;
+}
+
+.table > thead > tr > th a i{
+    color: #09aae4;
+}
+
+.table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td{
+    border-bottom: none;
+    border-top: none;
+    border-left: 2px solid #09aae4;
+    border-right: 2px solid #09aae4;
+        background-color: white;
+        text-align: center;
+        color: #09aae4;
+}
+
+.table-bordered > tbody > tr > td a{
+    color: #09aae4;
+}/*
+
+*/.table-bordered > tbody > tr > td a:hover{
+    color: #09aae4;
+    text-decoration: none;
+}/*
+
+*/.btn-default{
+    color:#09aae4;
+    background-color: white;
+        border-color: #09aae4;
+}
+
+/*.btn-default:hover{
+    color:#09aae4;
+    background-color: white;
+        border-color: #09aae4;
+}*/

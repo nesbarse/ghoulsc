@@ -164,10 +164,10 @@ init = {
                                                                 dom.form('role="form"',
                                                                         dom.fieldset('',
                                                                                 dom.div('class="form-group"',
-                                                                                        dom.input('class="form-control" id="broth_input_login" placeholder="Login" name="email" type="email" value="rafael" autofocus', '')
+                                                                                        dom.input('class="form-control" id="broth_input_login" placeholder="Login" name="email" type="email" value="Usuario" autofocus', '')
                                                                                         ) +
                                                                                 dom.div('class="form-group"',
-                                                                                        dom.input('class="form-control" id="broth_input_password" placeholder="Password" name="password" type="password" value="rafael"', '')
+                                                                                        dom.input('class="form-control" id="broth_input_password" placeholder="Password" name="password" type="password" value="Contraseña"', '')
                                                                                         ) +
                                                                                 dom.a('href="index.html" id="broth_button_login" class="btn btn-lg btn-success btn-block"', 'Login')
                                                                                 )

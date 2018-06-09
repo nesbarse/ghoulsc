@@ -52,7 +52,7 @@ configuration = {
         $('<link href="css/main/fonts/fonts.css" rel="stylesheet" type="text/css"/>').appendTo("head");        
         $('<link href="css/main/main.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         $('<link href="css/main/menu.css" rel="stylesheet" type="text/css"/>').appendTo("head");
-
+        $('<link href="css/main/standard.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         
     }
 }
