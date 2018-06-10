@@ -32,24 +32,24 @@ THE SOFTWARE.
         <div class="col-xs-12" ng-show="!status">
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
+<!--                    <li role="presentation" class="active">
                         <a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a>
                     </li>
                     <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab" aria-expanded="true">Campos visibles</a></li>
                     <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de servidor</a></li>
                     <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Filtro de cliente</a></li>
-                    <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>
+                    <li role="presentation"><a data-target="#pane4" aria-controls="pane4" role="tab" data-toggle="tab">Nuevo registro</a></li>-->
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" id="pane0" class="tab-pane fade active in">
                         <p></p>
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-12">
-                                <p>Mostrando una consulta de {{registers}} registros.</p>
+<!--                                <p>Mostrando una consulta de {{registers}} registros.</p>
                                 <p ng-show="orderParams == ''">Usuario no ordenado</p>
                                 <p ng-show="orderParams != ''"><small>Usuario ordenado por {{order}} ({{ordervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutOrder.replace('&', '?')}}" id="linkQuitarOrden">(Quitar orden)</a></small></p>
                                 <p ng-show="filterParams == ''">Usuario no filtrado</p>
-                                <p ng-show="filterParams != ''"><small>Usuario filtrado ({{filter}} {{filteroperator}} {{filtervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutFilter.replace('&', '?')}}" id="linkQuitarFiltro">(Quitar filtro)</a></small></p>
+                                <p ng-show="filterParams != ''"><small>Usuario filtrado ({{filter}} {{filteroperator}} {{filtervalue}}) <a href="#/{{ob}}/plist/{{numpage}}/{{rpp}}{{paramsWithoutFilter.replace('&', '?')}}" id="linkQuitarFiltro">(Quitar filtro)</a></small></p>-->
                             </div>
 
                             <div class="col-lg-6  col-md-6 col-sm-8 text-center">
@@ -102,6 +102,7 @@ THE SOFTWARE.
                                 <p>Campos visibles:</p>
                                 <input type="checkbox" ng-model="visibles.id" ng-checked="visibles.id">Ident.
                                 <input type="checkbox" ng-model="visibles.fecha_salida" ng-checked="visibles.fecha_salida" >Fecha Salida
+                                <input type="checkbox" ng-model="visibles.hora_salida" ng-checked="visibles.hora_salida" >Hora Salida
                                 <input type="checkbox" ng-model="visibles.id_usuario" ng-checked="visibles.id_usuario">Usuario
                                 <!--<input type="checkbox" ng-model="visibles.alta" ng-checked="visibles.alta">Alta-->
 <!--                                <input type="checkbox" ng-model="visibles.cambio" ng-checked="visibles.cambio">Último cambio
@@ -125,6 +126,7 @@ THE SOFTWARE.
                                         <option style="display:none">selecciona un campo</option>
                                         <option value="id">Identificador</option>
                                         <option value="fecha_salida">Fecha Salida</option>
+                                        <option value="hora_salida">Hora Salida</option>
                                         <option value="id_usuario">Usuario</option>
 <!--                                        <option value="alta">Alta</option>
                                         <option value="cambio">Último cambio</option>
@@ -194,6 +196,11 @@ THE SOFTWARE.
                         <a ng-show="visibles.fecha_salida" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=fecha_salida&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
                         <a ng-show="visibles.fecha_salida" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=fecha_salida&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
                     </th>
+                    <th ng-show="visibles.hora_salida"  class="text-center">
+                        Hora Salida<br/>
+                        <a ng-show="visibles.hora_salida" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=hora_salida&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.hora_salida" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=hora_salida&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
                     <th ng-show="visibles.id_usuario"  class="text-center">
                         Usuario<br/>
                         <a ng-show="visibles.id_usuario" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id_usuario&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
@@ -257,10 +264,19 @@ THE SOFTWARE.
                     <th  class="text-center">Acciones</th>
                 </tr>
             </thead>
+            
+            <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p><br>
+                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear una nueva {{ob}}</a>
+                                </p>
+                            </div>
+                        </div>
             <tbody>
                 <tr ng-repeat="obj in page| filter:searchText">
                     <td ng-show="visibles.id"  class="text-right">{{obj.id}}</td>
                     <td ng-show="visibles.fecha_salida">{{obj.fecha_salida}}</td>
+                    <td ng-show="visibles.hora_salida">{{obj.hora_salida}}</td>
                     <td ng-show="visibles.id_usuario"><a href="#/usuario/view/{{obj.obj_usuario.id}}">{{obj.obj_usuario.nombre}}</a></td>
 <!--                    <td ng-show="visibles.alta">{{obj.alta}}</td>
                     <td ng-show="visibles.cambio">{{obj.cambio}}</td>

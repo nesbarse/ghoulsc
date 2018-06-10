@@ -38,7 +38,7 @@ THE SOFTWARE.
         </div>
         
         <div id="alta-group" class="form-group">
-            <label class="col-sm-2 control-label" for="fecha_entrada">Fecha de alta:</label>
+            <label class="col-sm-2 control-label" for="fecha_entrada">Fecha de entrada:</label>
             <div class="control col-sm-3">
                 <div class="input-group date" id="alta_group">
                     <input type="text" class="form-control" starting-day="1" uib-datepicker-popup="dd/MM/yyyy hh:mm" ng-model="obj.fecha_entrada" is-open="popup2.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions1" date-disabled="disabled(date, mode)" ng-required="true" close-text="Cerrar" alt-input-formats="altInputFormats" placeholder="Fecha de Salida" />
@@ -46,6 +46,12 @@ THE SOFTWARE.
                         <i class="glyphicon glyphicon-calendar"></i>
                     </span>
                 </div>
+            </div>
+        </div>
+        <div id="altah-group" class="form-group">
+            <label class="col-sm-2 control-label" for="hora_entrada">Hora de entrada:</label>
+            <div class="control col-sm-8">
+                <input ng-model="obj.hora_entrada" type="text" id="hora_entrada" class="form-control" name="hora_entrada" size="15" placeholder="Hora de entrada">
             </div>
         </div>
         
@@ -76,7 +82,7 @@ THE SOFTWARE.
         </div>
     </form>
     
-    <div id="etiquetas-group" class="form-group">
+<!--    <div id="etiquetas-group" class="form-group">
             <label class="col-sm-2 control-label" for="etiquetas">Etiquetas:</label>
             <div class="control col-sm-8">
                 <input  ng-model="obj.etiquetas" type="text" id="etiquetas" class="form-control" name="etiquetas" size="15" placeholder="etiquetas">
@@ -104,7 +110,7 @@ THE SOFTWARE.
             <div class="control col-sm-1">
                 <input  ng-model="obj.destacado" type="checkbox" id="destacado" name="destacado" value="true" checked="checked">
             </div>
-        </div>
+        </div>-->
 
 
     <div ng-show="result != null">

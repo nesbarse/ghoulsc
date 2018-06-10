@@ -103,7 +103,7 @@ ul.nav.nav-tabs{
     color: white;
     background-color: #09aae4;
     border-color: #09aae4;
-        margin-bottom: 50px;
+        /*margin-bottom: 50px;*/
 
 }
 
@@ -112,7 +112,7 @@ ul.nav.nav-tabs{
     background-color: #09aae4;
     border-color: #09aae4;
     opacity: 0.6;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 .table-bordered{
@@ -154,6 +154,21 @@ ul.nav.nav-tabs{
         border-color: #09aae4;
 }
 
+li.dropdown.broth_show_when_logged_in.open li:nth-child(1) {
+    display: none;
+}
+
+li.dropdown.broth_show_when_logged_in.open li:nth-child(2) {
+    display: none;
+}
+
+li.dropdown.broth_show_when_logged_in.open li:nth-child(3) {
+    display: none;
+}
+
+li.dropdown.broth_show_when_logged_in.open li:nth-child(4) {
+    display: none;
+}
 /*.btn-default:hover{
     color:#09aae4;
     background-color: white;

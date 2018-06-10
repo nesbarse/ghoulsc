@@ -43,6 +43,7 @@ moduloSalida.controller('SalidaNewController', ['$scope', '$routeParams', '$loca
         
         $scope.obj.id = 0;
         $scope.obj.fecha_salida = null;
+//        $scope.obj.hora_salida = null;
         $scope.obj.obj_usuario = {"id": 0};
         
         

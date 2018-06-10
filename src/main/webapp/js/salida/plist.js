@@ -36,6 +36,7 @@ moduloSalida.controller('SalidaPListController', ['$scope', '$routeParams', 'ser
         $scope.visibles = {};
         $scope.visibles.id = true;
         $scope.visibles.fecha_salida = true;
+        $scope.visibles.hora_salida = true;
         $scope.visibles.id_usuario = true;
         
         

@@ -36,6 +36,7 @@ moduloEntrada.controller('EntradaPListController', ['$scope', '$routeParams', 's
         $scope.visibles = {};
         $scope.visibles.id = true;
         $scope.visibles.fecha_entrada = true;
+        $scope.visibles.hora_entrada = true;
         $scope.visibles.id_usuario = true;
 //        $scope.visibles.alta = true;
 //        $scope.visibles.cambio = true;

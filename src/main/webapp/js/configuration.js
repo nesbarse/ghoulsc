@@ -53,6 +53,8 @@ configuration = {
         $('<link href="css/main/main.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         $('<link href="css/main/menu.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         $('<link href="css/main/standard.css" rel="stylesheet" type="text/css"/>').appendTo("head");
+        $('<link href="css/main/login.css" rel="stylesheet" type="text/css"/>').appendTo("head");
+        $('<link href="css/main/forms.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         
     }
 }

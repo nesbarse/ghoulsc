@@ -105,6 +105,7 @@ THE SOFTWARE.
                                 <p>Campos visibles:</p>
                                 <input type="checkbox" ng-model="visibles.id" ng-checked="visibles.id">Ident.
                                 <input type="checkbox" ng-model="visibles.fecha_entrada" ng-checked="visibles.fecha_entrada" >Fecha Entrada
+                                <input type="checkbox" ng-model="visibles.hora_entrada" ng-checked="visibles.hora_entrada" >Hora Entrada
                                 <input type="checkbox" ng-model="visibles.id_usuario" ng-checked="visibles.id_usuario">Usuario
                                 <!--<input type="checkbox" ng-model="visibles.alta" ng-checked="visibles.alta">Alta-->
 <!--                                <input type="checkbox" ng-model="visibles.cambio" ng-checked="visibles.cambio">Último cambio
@@ -128,6 +129,7 @@ THE SOFTWARE.
                                         <option style="display:none">selecciona un campo</option>
                                         <option value="id">Identificador</option>
                                         <option value="fecha_entrada">Fecha Entrada</option>
+                                        <option value="hora_entrada">Hora Entrada</option>
                                         <option value="id_usuario">Usuario</option>
 <!--                                        <option value="alta">Alta</option>
                                         <option value="cambio">Último cambio</option>
@@ -188,6 +190,11 @@ THE SOFTWARE.
                         Fecha Entrada<br/>
                         <a ng-show="visibles.fecha_entrada" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
                         <a ng-show="visibles.fecha_entrada" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=id&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                    </th>
+                    <th ng-show="visibles.hora_entrada"  class="text-center">
+                        Hora Entrada<br/>
+                        <a ng-show="visibles.hora_entrada" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=hora_entrada&ordervalue=asc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        <a ng-show="visibles.hora_entrada" href="#/{{ob}}/plist/{{numpage}}/{{rpp}}?order=hora_entrada&ordervalue=desc{{paramsWithoutOrder}}"><i class="glyphicon glyphicon-arrow-down"></i></a>
                     </th>
                     <th ng-show="visibles.id_usuario"  class="text-center">
                         Usuario<br/>
@@ -256,7 +263,7 @@ THE SOFTWARE.
             <div class="row">
                             <div class="col-md-12 text-center">
                                 <p><br>
-                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear un nuevo {{ob}}</a>
+                                    <a class="btn btn-primary" href="#/{{ob}}/new">Crear una nueva {{ob}}</a>
                                 </p>
                             </div>
                         </div>
@@ -264,6 +271,7 @@ THE SOFTWARE.
                 <tr ng-repeat="obj in page| filter:searchText">
                     <td ng-show="visibles.id"  class="text-right">{{obj.id}}</td>
                     <td ng-show="visibles.fecha_entrada">{{obj.fecha_entrada}}</td>
+                    <td ng-show="visibles.hora_entrada">{{obj.hora_entrada}}</td>
                     <td ng-show="visibles.id_usuario"><a href="#/usuario/view/{{obj.obj_usuario.id}}">{{obj.obj_usuario.nombre}}</a></td>
 <!--                    <td ng-show="visibles.alta">{{obj.alta}}</td>
                     <td ng-show="visibles.cambio">{{obj.cambio}}</td>

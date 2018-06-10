@@ -47,6 +47,8 @@ public class SalidaBean implements GenericBean {
     private Integer id = 0;
     @Expose
     private Date fecha_salida;
+    @Expose
+    private String hora_salida;
     @Expose(serialize = false)
     private Integer id_usuario;
     @Expose(deserialize = false)
@@ -80,6 +82,14 @@ public class SalidaBean implements GenericBean {
         this.fecha_salida = fecha_salida;
     }
 
+    public String getHora_salida() {
+        return hora_salida;
+    }
+
+    public void setHora_salida(String hora_salida) {
+        this.hora_salida = hora_salida;
+    }
+    
     public Integer getId_usuario() {
         return id_usuario;
     }
@@ -101,6 +111,7 @@ public class SalidaBean implements GenericBean {
        String strColumns = "";
         strColumns += "id,";
         strColumns += "fecha_salida,";
+        strColumns += "hora_salida,";
         strColumns += "id_usuario";
         return strColumns;
     }
@@ -110,6 +121,7 @@ public class SalidaBean implements GenericBean {
        String strColumns = "";
         strColumns += id + ",";
         strColumns += EncodingUtilHelper.stringifyAndQuotate(fecha_salida) + ",";
+        strColumns += EncodingUtilHelper.quotate(hora_salida) + ",";
         strColumns += id_usuario;
         return strColumns;
     }
@@ -119,6 +131,7 @@ public class SalidaBean implements GenericBean {
         String strPairs = "";
         strPairs += "id=" + id + ",";
         strPairs += "fecha_salida = " + EncodingUtilHelper.stringifyAndQuotate(fecha_salida) + ",";
+        strPairs += "hora_salida = " + EncodingUtilHelper.quotate(hora_salida) + ",";
         strPairs += "id_usuario = " + id_usuario;
         return strPairs;
     }
@@ -127,6 +140,7 @@ public class SalidaBean implements GenericBean {
     public SalidaBean fill(ResultSet oResultSet, Connection pooledConnection, Integer expand) throws SQLException, Exception {
         this.setId(oResultSet.getInt("id"));
         this.setFecha_salida(oResultSet.getTimestamp("fecha_salida"));
+        this.setHora_salida(oResultSet.getString("hora_salida"));
         this.id_usuario = oResultSet.getInt("id_usuario");
         if (expand > 0) {
             UsuarioBean oUsuarioBean = new UsuarioBean();
