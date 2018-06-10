@@ -35,12 +35,12 @@ moduloUsuario.controller('UsuarioNewController', ['$scope', '$routeParams', '$lo
         $scope.op = 'new';
         $scope.result = null;
         
-        $scope.title = "Edición de usuario";
+        $scope.title = "Creación de usuario";
         $scope.icon = "fa-file-text-o";
         
         $scope.obj = {};
         $scope.obj.obj_tipousuario = {"id": 0};
-        $scope.obj.obj_estado = {"id": 0};
+//        $scope.obj.obj_estado = {"id": 0};
         
         if (sharedSpaceService.getFase() == 0) {
             if ($routeParams.tipousuario && $routeParams.tipousuario > 0) {

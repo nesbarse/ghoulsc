@@ -48,8 +48,8 @@ public class UsuarioBean implements GenericBean{
     private String password = "";
     @Expose
     private String puesto;
-    @Expose
-    private String mac_tlfn;
+//    @Expose
+//    private String mac_tlfn;
     @Expose
     private String num_tlfn;
     @Expose(serialize = false)
@@ -129,13 +129,13 @@ public class UsuarioBean implements GenericBean{
         this.puesto = puesto;
     }
 
-    public String getMac_tlfn() {
-        return mac_tlfn;
-    }
-
-    public void setMac_tlfn(String mac_tlfn) {
-        this.mac_tlfn = mac_tlfn;
-    }
+//    public String getMac_tlfn() {
+//        return mac_tlfn;
+//    }
+//
+//    public void setMac_tlfn(String mac_tlfn) {
+//        this.mac_tlfn = mac_tlfn;
+//    }
 
     public String getNum_tlfn() {
         return num_tlfn;
@@ -155,7 +155,7 @@ public class UsuarioBean implements GenericBean{
         strJson += "login:" + EncodingUtilHelper.quotate(login) + ",";
         strJson += "password:" + EncodingUtilHelper.quotate(password) + ",";
         strJson += "puesto:" + EncodingUtilHelper.quotate(puesto) + ",";
-        strJson += "mac_tlfn:" + EncodingUtilHelper.quotate(mac_tlfn) + ",";
+//        strJson += "mac_tlfn:" + EncodingUtilHelper.quotate(mac_tlfn) + ",";
         strJson += "num_tlfn:" + EncodingUtilHelper.quotate(num_tlfn) + ",";
         if (expand) {
             strJson += "obj_tipousuario:" + obj_tipousuario.toJson(false) + ",";
@@ -175,7 +175,7 @@ public class UsuarioBean implements GenericBean{
         strColumns += "login,";
         strColumns += "password,";
         strColumns += "puesto,";
-        strColumns += "mac_tlfn,";
+//        strColumns += "mac_tlfn,";
         strColumns += "num_tlfn,";
         strColumns += "id_tipousuario";
         return strColumns;
@@ -190,7 +190,7 @@ public class UsuarioBean implements GenericBean{
         strColumns += EncodingUtilHelper.quotate(login) + ",";
         strColumns += EncodingUtilHelper.quotate(password) + ",";
         strColumns += EncodingUtilHelper.quotate(puesto) + ",";
-        strColumns += EncodingUtilHelper.quotate(mac_tlfn) + ",";
+//        strColumns += EncodingUtilHelper.quotate(mac_tlfn) + ",";
         strColumns += EncodingUtilHelper.quotate(num_tlfn) + ",";
         strColumns += id_tipousuario;
 
@@ -206,7 +206,7 @@ public class UsuarioBean implements GenericBean{
         strColumns += EncodingUtilHelper.quotate(login) + ",";
         strColumns += EncodingUtilHelper.quotate(password) + ",";
         strColumns += EncodingUtilHelper.quotate(puesto) + ",";
-        strColumns += EncodingUtilHelper.quotate(mac_tlfn) + ",";
+//        strColumns += EncodingUtilHelper.quotate(mac_tlfn) + ",";
         strColumns += EncodingUtilHelper.quotate(num_tlfn) + ",";
         strColumns += id_tipousuario;
         return strColumns;
@@ -220,7 +220,7 @@ public class UsuarioBean implements GenericBean{
         this.setLogin(oResultSet.getString("login"));
         this.setPassword(oResultSet.getString("password"));
         this.setPuesto(oResultSet.getString("puesto"));
-        this.setMac_tlfn(oResultSet.getString("mac_tlfn"));
+//        this.setMac_tlfn(oResultSet.getString("mac_tlfn"));
         this.setNum_tlfn(oResultSet.getString("num_tlfn"));
         if (expand > 0) {
             TipousuarioBean oTipousuarioBean = new TipousuarioBean();

@@ -26,80 +26,38 @@ THE SOFTWARE.
 
 */
 /* 
-    Created on : 10-jun-2018, 11:33:20
+    Created on : 10-jun-2018, 13:04:12
     Author     : Casa
 */
 
-form.form-horizontal.ng-pristine.ng-valid-date.ng-invalid.ng-invalid-required.ng-valid-maxlength{
+.panel.panel-default{
+    color: black;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+.panel-heading h1{
+    font-size: 60px;
+    font-weight: bold;
     color: #09aae4;
+    margin-left: 215px;
 }
 
-input#id {
-    background-color: #e0e0e0;
-    border: 1px solid #09aae4;
-    /*opacity: 0.6;*/
-    /*color: white;*/
+.panel.panel-default h2{
+    font-size: 40px;
 }
 
-input#obj_usuario{
-    background-color: #e0e0e0;
-    border: 1px solid #09aae4;
+.panel.panel-default h3{
+    font-size: 30px;
 }
 
-input#obj_tipousuario{
-    background-color: #e0e0e0;
-    border: 1px solid #09aae4;
-}
-
-span#obj_tipousuario_button{
-    color: white;
-}
-
-/*input.form-control.ng-pristine.ng-isolate-scope.ng-valid-date.ng-invalid.ng-invalid-required.ng-touched{
-    border: 1px solid #09aae4;
-}*/
-
-input.form-control.ng-isolate-scope.ng-valid-date.ng-invalid.ng-invalid-required.ng-touched.ng-dirty{
+.panel.panel-default h2, .panel.panel-default h3{
     color: #09aae4;
+  
 }
 
-form.form-horizontal.ng-pristine.ng-invalid.ng-invalid-required.ng-valid-maxlength{
-    color: #09aae4;
+.panel.panel-default p{
+    margin: 30px 0 30px 0;
 }
-
-form.form-horizontal.ng-pristine.ng-valid.ng-valid-maxlength{
-    color: #09aae4;
-}
-
-span.input-group-addon{
-    background-color: #09aae4;
-}
-
-i.glyphicon.glyphicon-calendar{
-    color: white;
-}
-
-span#obj_usuario_button{
-    color: white;
-    border: 1px solid #09aae4;
-}
-
-span.input-group-addon{
-    border: 1px solid #09aae4;
-}
-
-span.input-group-addon a{
-    color: white;
-}
-
-a.btn.btn-primary {
-    background-color: #09aae4;
-    border: 1px solid #09aae4;
-}
-
-
-
-
-
-
-

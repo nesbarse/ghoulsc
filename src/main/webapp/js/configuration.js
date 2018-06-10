@@ -55,6 +55,7 @@ configuration = {
         $('<link href="css/main/standard.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         $('<link href="css/main/login.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         $('<link href="css/main/forms.css" rel="stylesheet" type="text/css"/>').appendTo("head");
+        $('<link href="css/main/homee.css" rel="stylesheet" type="text/css"/>').appendTo("head");
         
     }
 }

@@ -62,13 +62,13 @@ moduloUsuario.controller('UsuarioEditController', ['$scope', '$routeParams', '$l
                 });
             }
         });
-        $scope.$watch('obj.obj_estado.id', function () {
-            if ($scope.obj) {
-                serverService.getDataFromPromise(serverService.promise_getOne('estado', $scope.obj.obj_estado.id)).then(function (data2) {
-                    $scope.obj.obj_estado = data2.message;
-                });
-            }
-        });
+//        $scope.$watch('obj.obj_estado.id', function () {
+//            if ($scope.obj) {
+//                serverService.getDataFromPromise(serverService.promise_getOne('estado', $scope.obj.obj_estado.id)).then(function (data2) {
+//                    $scope.obj.obj_estado = data2.message;
+//                });
+//            }
+//        });
         $scope.back = function () {
             window.history.back();
         };
